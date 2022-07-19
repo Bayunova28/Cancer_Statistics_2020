@@ -1,5 +1,5 @@
 # Cancer Statistics 2020
-<img src="https://github.com/Bayunova28/Cancer_Statistics_2020/blob/master/Images/cover.jpg" height="500" width="1100">
+<img src="https://github.com/Bayunova28/Cancer_Statistics_2020/blob/master/Images/cover.jpg" height="400" width="1100">
 
 ## Context
 <p align=justify>Cancer is a large group of diseases that can start in almost any organ or tissue of the body when abnormal cells grow uncontrollably, go beyond their 
