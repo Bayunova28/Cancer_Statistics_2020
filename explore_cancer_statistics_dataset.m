@@ -1,0 +1,81 @@
+clc;
+clear all;
+close all;
+warning off;
+
+%Load dataset
+df = readtable("Cancer_Statistics/cancer_data.csv");
+
+%Check total rows and columns
+size(df);
+
+%Check missing values
+ismissing(df);
+
+%Check descriptive statistics of each variables
+summary(df);
+
+%Visualize correlation matrix
+corrplot([df.new_cases_number, df.DeathsNumber, df.death_percentage, ...
+          df.risk_of_prevalence_5yr, df.per100k_5yr_prevalence]);
+
+%Visualize distribution of new cases number
+histfit(df.new_cases_number);
+title('Distribution of New Cases Number');
+xlabel('New Cases Number');
+ylabel('Density');
+
+%Visualize distribution of deaths number
+histfit(df.DeathsNumber);
+title('Distribution of Deaths Number');
+xlabel('Deaths Number');
+ylabel('Density');
+
+%Visualize distribution of death percentage
+histfit(df.death_percentage);
+title('Distribution of Death Percentage');
+xlabel('Death Percentage');
+ylabel('Density');
+
+%Visualize distribution of risk of prevalence 5 year
+histfit(df.risk_of_prevalence_5yr);
+title('Distribution of Risk of Prevalence 5 Year');
+xlabel('Risk of Prevalence 5 Year');
+ylabel('Density');
+
+%Visualize distribution of prevalence per 100k 5 year
+histfit(df.per100k_5yr_prevalence);
+title('Distribution of Prevalence per 100K for 5 Year');
+xlabel('Prevalence per 100K');
+ylabel('Density');
+
+%Check number of cancer type values
+cancer_type = categorical(df.cancer_type);
+summary(cancer_type);
+
+%Visualize cancer type by new cases number
+figure.Position = [10 10 1000 700];
+type = categorical(df.cancer_type);
+new_cases = sort([df.new_cases_number], 'ascend');
+barh(type,new_cases);
+title('Cancer Type by New Cases Number');
+xlabel('New Cases Number');
+ylabel('Cancer Type');
+
+%Visualize cancer type by deaths number
+figure.Position = [10 10 1000 700];
+type = categorical(df.cancer_type);
+death_number = sort([df.DeathsNumber], 'ascend');
+barh(type, death_number, 'red');
+title("Cancer Type by Deaths Number");
+xlabel('Deaths Number');
+ylabel('Cancer Type');
+
+%Visualize cancer type by risk prevalence for 5 year
+figure.Position = [10 10 1000 700];
+type = categorical(df.cancer_type);
+risk_prevalence = sort([df.risk_of_prevalence_5yr], 'ascend');
+barh(type, risk_prevalence, 'cyan');
+title("Cancer Type by Risk of Prevalence for 5 Year");
+xlabel("Risk of Prevalence");
+ylabel("Cancer Type");
